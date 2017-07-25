@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4F6-jH-3cq" id="V8g-Yf-XNE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbm-lg-z3a" userLabel="FirstView">
@@ -53,7 +53,7 @@
                                                     <rect key="frame" x="0.0" y="40" width="375" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kB1-VU-Yut">
-                                                            <rect key="frame" x="0.0" y="8" width="375" height="44"/>
+                                                            <rect key="frame" x="0.0" y="8" width="375" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -63,7 +63,6 @@
                                                     <constraints>
                                                         <constraint firstItem="kB1-VU-Yut" firstAttribute="top" secondItem="P7h-25-t1a" secondAttribute="top" constant="8" id="11v-li-V3w"/>
                                                         <constraint firstAttribute="trailing" secondItem="kB1-VU-Yut" secondAttribute="trailing" id="LcK-fz-gaE"/>
-                                                        <constraint firstAttribute="bottom" secondItem="kB1-VU-Yut" secondAttribute="bottom" constant="8" id="QyV-Gt-DrE"/>
                                                         <constraint firstItem="kB1-VU-Yut" firstAttribute="leading" secondItem="P7h-25-t1a" secondAttribute="leading" id="Tro-0F-LJT"/>
                                                         <constraint firstAttribute="height" constant="60" id="bF7-oh-Ki7"/>
                                                     </constraints>

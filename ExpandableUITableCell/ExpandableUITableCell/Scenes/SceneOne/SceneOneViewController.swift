@@ -83,6 +83,11 @@ class SceneOneViewController: UIViewController, SceneOneDisplayLogic
     self.dataTableView.dataSource = self
     self.dataTableView.delegate = self
     
+    // Must have this in place, other wise 
+    // tableview.cellForRowAtIndexPath inside calculateHeight will throw error
+    self.dataTableView.estimatedRowHeight = 40
+    
+    
     fetchData()
   }
   
@@ -91,9 +96,37 @@ class SceneOneViewController: UIViewController, SceneOneDisplayLogic
 
   // View Controller to initialise the command to fetch Data
   // Using interactor to perform this task
-  func fetchData()
+  private func fetchData()
   {
     interactor?.fetchData()
+  }
+  
+  fileprivate func calculateHeight(selectedIndexPath: IndexPath) -> CGFloat
+  {
+    // Get current selected cell
+    
+    if let cell = self.dataTableView.cellForRow(at: selectedIndexPath) as? CustomCell
+    {
+      cell.collapisbleViewLabel.frame = self.cellCollapisbleViewLabelFrame(cell: cell, selectedIndexPath: selectedIndexPath)
+      
+      return 40 + 8 + cell.collapisbleViewLabel.frame.size.height + 10
+    }
+    
+    return 40
+
+  }
+  
+  fileprivate func cellCollapisbleViewLabelFrame(cell: CustomCell, selectedIndexPath: IndexPath) -> CGRect
+  {
+    cell.collapisbleViewLabel.text = self.data[selectedIndexPath.row]
+    cell.collapisbleViewLabel.numberOfLines = 0
+    
+    var labelFrame = cell.collapisbleViewLabel.frame
+    
+    let maxSize = CGSize.init(width: cell.collapisbleViewLabel.frame.size.width, height: CGFloat.greatestFiniteMagnitude)
+    let requiredSize = cell.collapisbleViewLabel.sizeThatFits(maxSize)
+    labelFrame.size.height = requiredSize.height
+    return labelFrame
   }
   
   func receiveData(viewModel: SceneOne.SceneOne.ViewModel)
@@ -129,7 +162,7 @@ extension SceneOneViewController : UITableViewDelegate
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if selectedIndeies[indexPath.row] == indexPath.row
     {
-      return 100
+      return self.calculateHeight(selectedIndexPath: indexPath)
     }
     else
     {
@@ -148,6 +181,7 @@ extension SceneOneViewController : UITableViewDataSource
     let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
     
     cell.collapisbleViewLabel.text = data[indexPath.row]
+    cell.collapisbleViewLabel.frame = cellCollapisbleViewLabelFrame(cell: cell, selectedIndexPath: indexPath)
     
     cell.selectionStyle = .none
     

@@ -82,12 +82,12 @@ class SceneOneViewController: UIViewController, SceneOneDisplayLogic
     
     self.dataTableView.dataSource = self
     self.dataTableView.delegate = self
+    self.dataTableView.separatorStyle = .none
     
     // Must have this in place, other wise 
     // tableview.cellForRowAtIndexPath inside calculateHeight will throw error
     self.dataTableView.estimatedRowHeight = 40
-    
-    
+
     fetchData()
   }
   
@@ -109,7 +109,11 @@ class SceneOneViewController: UIViewController, SceneOneDisplayLogic
     {
       cell.collapisbleViewLabel.frame = self.cellCollapisbleViewLabelFrame(cell: cell, selectedIndexPath: selectedIndexPath)
       
-      return 40 + 8 + cell.collapisbleViewLabel.frame.size.height + 10
+      let updatedHeight = 8 + cell.collapisbleViewLabel.frame.size.height + 10
+      
+      cell.secondViewHeightConstraint.constant = updatedHeight
+      
+      return 40 + updatedHeight
     }
     
     return 40

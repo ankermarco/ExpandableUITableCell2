@@ -12,5 +12,6 @@ class CustomCell: UITableViewCell {
 
   @IBOutlet weak var collapisbleViewLabel: UILabel!
 
+  @IBOutlet weak var secondViewHeightConstraint: NSLayoutConstraint!
 
 }

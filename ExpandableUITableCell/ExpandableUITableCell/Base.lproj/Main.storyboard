@@ -82,6 +82,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="collapisbleViewLabel" destination="kB1-VU-Yut" id="55f-Td-fF4"/>
+                                            <outlet property="secondViewHeightConstraint" destination="bF7-oh-Ki7" id="QGH-hM-GFp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
